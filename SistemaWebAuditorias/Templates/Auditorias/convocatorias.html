@@ -1,0 +1,85 @@
+{% extends 'Auditorias/home.html' %}
+{% load staticfiles %}
+{% block title %}Proyectos de Auditorias{% endblock %}
+
+
+{% block content %}
+  <!-- Begin Page Content -->
+  <div class="container-fluid">
+
+    
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Solicitud de Apoyo para las Auditorias</h1>
+   
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Solicita Apoyo</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+        
+                <th>Solicitar</th>
+              </tr>
+            </thead>
+           
+            <tbody>
+                {% if audit %}
+                {% for au in audit %}
+              <tr>
+                <td>{{ au.codigo }}</td>
+                <td>{{ au.nombre }}</td>
+               
+                <td><a href="{% url 'Auditorias:convo' au.id %}" class="btn btn-primary form-control">Apoyo</a></td>
+              </tr>
+              {% endfor %}
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+       <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Solicitudes</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Auditoria</th>
+                <th>Usuario</th>        
+                <th>Estado</th>
+              </tr>
+            </thead>
+           
+            <tbody>
+                {% if convo %}
+                {% for convo in convo %}
+              <tr>
+                <td>{{ convo.auditoria.nombre }}</td>
+                <td>{{ convo.user }}</td>
+                <td>{{ convo.state }}</td>
+               
+                </tr>
+              {% endfor %}
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- /.container-fluid -->
+{% endblock %}

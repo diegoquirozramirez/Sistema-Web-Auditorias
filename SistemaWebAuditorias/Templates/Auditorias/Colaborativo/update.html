@@ -1,0 +1,16 @@
+{% extends 'Auditorias/home.html' %}
+{% load staticfiles %}
+{% block title %}Espacio de Colaboración para las Auditorias{% endblock %}
+
+
+{% block content %}
+
+<form action="" method="POST" style="width: 80%; margin-left: 100px;">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Update" class="btn btn-primary form-control">
+   
+</form>
+
+   
+{% endblock %}

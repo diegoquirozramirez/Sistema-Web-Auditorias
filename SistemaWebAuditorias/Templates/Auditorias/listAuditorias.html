@@ -1,0 +1,54 @@
+{% extends 'Auditorias/home.html' %}
+{% load staticfiles %}
+{% block title %}Proyectos de Auditorias{% endblock %}
+
+
+{% block content %}
+  <!-- Begin Page Content -->
+  <div class="container-fluid">
+
+    
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Auditorias</h1>
+   
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Listado</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                
+                <th>Start date</th>
+                <th>Finish date</th>
+                <th>Informe</th>
+              </tr>
+            </thead>
+           
+            <tbody>
+                {% if audit %}
+                {% for au in audit %}
+              <tr>
+                <td>{{ au.codigo }}</td>
+                <td>{{ au.nombre }}</td>
+                
+                <td>{{ au.init_date }}</td>
+                <td>{{ au.fini_date }}</td>
+                <td><center><a class="bnt btn-success btn-circle" href="{{ au.inform.url }}">Ver</a></center></td>
+              </tr>
+              {% endfor %}
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.container-fluid -->
+{% endblock %}
